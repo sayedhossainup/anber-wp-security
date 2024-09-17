@@ -86,10 +86,11 @@ function anber_wp_security_settings_link($links) {
 /**
  * Includes files
  */
-require_once plugin_dir_path(__FILE__) . 'includes/anber_wp_config.php';
+require_once plugin_dir_path(__FILE__) . 'includes/anber_wps_config.php';
 require_once plugin_dir_path(__FILE__) . 'includes/anber_wps_htaccess.php';
 require_once plugin_dir_path(__FILE__) . 'includes/anber_wps_setting.php';
-require_once plugin_dir_path(__FILE__) . 'includes/anber_wp_login_attempts.php';
+require_once plugin_dir_path(__FILE__) . 'includes/anber_wps_login_attempts.php';
+require_once plugin_dir_path(__FILE__) . 'includes/anber_wps_upload_restect.php';
 
 
 

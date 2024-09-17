@@ -1,0 +1,367 @@
+.mb-30{margin-bottom: 30px}
+h2.pagetitle.mb-30 {
+    font-size: 30px;
+    padding: 30px 0;
+    font-family: "IBM Plex Sans", sans-serif;
+}
+/*
+Switch Style
+*/
+.switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.switch input {
+    display:none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+}
+
+input:checked + .slider {
+    background-color: #66bb6a;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+input#anber_wp_security_ip {
+    width: 500px;
+    min-height: 100px;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
+    border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+    border-image: none;
+    border-radius: 6px 6px 6px 6px;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+    color: #555555;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1em;
+    line-height: 1.4em;
+    padding: 5px 8px;
+    transition: background-color 0.2s ease 0s;
+}
+
+
+input#anber_wp_security_ip:focus {
+    background: none repeat scroll 0 0 #FFFFFF;
+    outline-width: 0;
+}
+
+/* Tab style */
+section#wrapper {
+    padding: 60px;
+}
+
+/* Tabs menu */
+.tabs {
+    margin: 0;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    display: flex;
+    justify-content:start;
+    align-items: center;
+    height: 80px;
+    border-radius: 2px 2px 0px 0px;
+}
+@media screen and (max-width: 512px) {
+    .tabs {
+        height: 40px;
+    }
+}
+
+/* Tab Links */
+.tablinks {
+    background: transparent;
+    background-image: linear-gradient(90deg, transparent 70%, rgba(255, 255, 255, 0.2) 100%);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 25%;
+    /*change depending on the number of tabs*/
+    height: 80px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-family: "IBM Plex Sans", sans-serif;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+@media screen and (max-width: 512px) {
+    .tablinks {
+        height: 40px;
+        font-size: 12px;
+    }
+}
+
+.tablinks:before {
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    content: "";
+    width: 100%;
+    height: 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.3s ease-in-out;
+    z-index: 2;
+}
+
+/*tab buttons hover*/
+.tablinks:hover::before {
+    height: 100%;
+    z-index: 2;
+    bottom: 0;
+}
+@media screen and (max-width: 512px) {
+    .tablinks:hover::before {
+        height: 0;
+    }
+}
+
+/* Tab active */
+.tablinks.active {
+    background-color: white;
+    z-index: 0;
+    border-right: 0px;
+    border-left: 0px;
+    height: 110px;
+    bottom: 0px;
+    overflow: hidden;
+}
+@media screen and (max-width: 512px) {
+    .tablinks.active {
+        height: 60px;
+    }
+}
+
+.tablinks.active:before {
+    content: "";
+    width: 100%;
+    height: 5px;
+    top: 0;
+    left: 0;
+}
+
+/* Tabs text */
+.tablinks.active p,
+.tablinks.active:hover p {
+    opacity: 1;
+    background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tablinks p {
+    opacity: 0.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: 0.5s ease;
+    padding: 0;
+    margin: 0;
+    color: #686868;
+    backface-visibility: hidden;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.tablinks:hover p {
+    color: white;
+    opacity: 1;
+}
+@media screen and (max-width: 512px) {
+    .tablinks:hover p {
+        color: #686868;
+        opacity: 0.6;
+    }
+}
+
+/* Tabs text bigger */
+.tablinks p:before {
+    content: attr(data-title);
+    position: absolute;
+    height: auto;
+    width: auto;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.1;
+    font-size: 40px;
+    transition: 1s ease-out;
+    z-index: -1;
+    font-weight: 600;
+    top: 110%;
+}
+@media screen and (max-width: 512px) {
+    .tablinks p:before {
+        display: none;
+    }
+}
+
+.tablinks:hover p:before {
+    opacity: 0.1;
+    font-size: 40px;
+    top: -80%;
+}
+
+/* tab content */
+.wrapper_tabcontent {
+    background-color: white;
+    margin-top: 0px;
+    z-index: 1;
+    position: relative;
+    opacity: 1;
+    padding: 40px 60px;
+    overflow: hidden;
+    transition: all 1s ease;
+    top: 0;
+}
+
+.tabcontent {
+    display: none;
+    min-height: 180px;
+}
+
+@keyframes tabEffect {
+    from {
+        top: -40px;
+    }
+    to {
+        top: 0px;
+    }
+}
+.tabcontent.active {
+    transition: all 1s ease;
+    display: block;
+}
+
+/* Tab content line */
+.wrapper_tabcontent:after {
+    content: "";
+    height: 5px;
+    width: 100%;
+    position: absolute;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    left: 0;
+    bottom: 0;
+    z-index: -2;
+    transition: all 1s ease;
+}
+
+/* Title */
+.tabcontent h3 {
+    font-size: 40px;
+    top: 75px;
+    transform: rotate(90deg);
+    position: absolute;
+    left: -90px;
+    opacity: 0.1;
+    width: 200px;
+    height: 60px;
+    background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0;
+    animation: city 1s ease;
+}
+@media screen and (max-width: 512px) {
+    .tabcontent h3 {
+        top: 65px;
+    }
+}
+
+@keyframes city {
+    from {
+        left: -150px;
+    }
+    to {
+        left: -90px;
+    }
+}
+/* Text*/
+.tabcontent p {
+    color: #686868;
+    margin: 0;
+    padding: 0;
+    line-height: 28px;
+    font-weight: 100;
+    transition: all 1s ease;
+    animation: fadeEffect 0.6s ease;
+    width: 100%;
+    font-size: 16px;
+    font-family: "IBM Plex Sans", sans-serif;
+}
+@media screen and (max-width: 512px) {
+    .tabcontent p {
+        font-size: 14px;
+        line-height: 26px;
+    }
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+        margin-left: 30px;
+    }
+    to {
+        opacity: 1;
+        margin-left: 0;
+    }
+}
+
+
+div#style-settings tbody{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+div#style-settings tbody tr {
+    flex: 0 0 43%;
+}
+
+
+
+.form-table th{
+    width: 400px;
+}
+

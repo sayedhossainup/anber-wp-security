@@ -71,15 +71,15 @@ function anber_wp_security_settings() {
     register_setting('anber_wp_security_options_group', 'anber_wp_security_option');
     register_setting('anber_wp_security_options_group', 'anber_wp_security_dwpu');
     register_setting('anber_wp_security_options_group', 'anber_wp_security_lla_option');
-
     register_setting('anber_wp_security_options_group', 'anber_wp_security_enable_ip');
     register_setting('anber_wp_security_options_group', 'anber_wp_security_ip');
-    register_setting('anber_wp_security_header_group', 'anber_wp_security_xss_protection');
+    
     register_setting('anber_wp_security_header_group', 'anber_wp_security_content_security_policy');
     register_setting('anber_wp_security_header_group', 'anber_wp_security_hsts');
     register_setting('anber_wp_security_header_group', 'anber_wp_security_prevent_clickjacking');
     register_setting('anber_wp_security_header_group', 'anber_wp_security_prevent_content_sniffing');
     register_setting('anber_wp_security_header_group', 'anber_wp_security_referrer_policy');
+    
 
     add_settings_section(
             'anber_wp_security_main_section',
@@ -130,24 +130,19 @@ function anber_wp_security_settings() {
 
     add_settings_section(
             'anber_wp_security_header_section',
-            'Add Security Headers',
+            'Security Headers',
             'anber_wp_security_header_text',
             'anber_wp_security_header'
     );
+
     add_settings_field(
-            'anber_wp_security_xss_protection',
-            'Enable XSS Protection',
-            'anber_wp_security_xss_protection_callback',
-            'anber_wp_security_header',
-            'anber_wp_security_header_section'
-    );
-    add_settings_field(
-            'anber_wp_security_content_security_policy',
-            'Enable Content Security Policy',
-            'anber_wp_security_content_security_policy_callback',
-            'anber_wp_security_header',
-            'anber_wp_security_header_section'
-    );
+    'anber_wp_security_content_security_policy',
+    'Enable Content Security Policy',
+    'anber_wp_security_content_security_policy_callback',
+    'anber_wp_security_header',
+    'anber_wp_security_header_section',    
+);
+
     add_settings_field(
             'anber_wp_security_hsts',
             'Enable HSTS (HTTP Strict Transport Security)',
@@ -176,6 +171,9 @@ function anber_wp_security_settings() {
             'anber_wp_security_header',
             'anber_wp_security_header_section'
     );
+    
+ 
+
 }
 
 function anber_wp_security_section_text() {
@@ -212,14 +210,9 @@ function anber_wp_security_ip_callback() {
 }
 
 function anber_wp_security_header_text() {
-    echo 'Add security headers to your website for added protection:';
+    echo "Enhance your website's protection by implementing security headers";
 }
 
-function anber_wp_security_xss_protection_callback() {
-    $option = get_option('anber_wp_security_xss_protection');
-    $checked = isset($option) && $option === '1' ? 'checked' : '';
-    echo '<label class="switch" for="anber_wp_security_xss_protection"><input type="checkbox" id="anber_wp_security_xss_protection" name="anber_wp_security_xss_protection" value="1" ' . esc_attr($checked) . ' /><div class="slider round"></div></label>';
-}
 
 function anber_wp_security_dwpu_callback() {
     $option = get_option('anber_wp_security_dwpu');
@@ -233,32 +226,41 @@ function anber_wp_security_lla_callback() {
     echo '<label class="switch" for="anber_wp_security_lla_option"><input type="checkbox" id="anber_wp_security_lla_option" name="anber_wp_security_lla_option" value="1" ' . esc_attr($checked) . ' /><div class="slider round"></div></label>';
 }
 
-function anber_wp_security_content_security_policy_callback() {
+function anber_wp_security_content_security_policy_callback($args) {
     $option = get_option('anber_wp_security_content_security_policy');
     $checked = isset($option) && $option === '1' ? 'checked' : '';
     echo '<label class="switch" for="anber_wp_security_content_security_policy"><input type="checkbox" id="anber_wp_security_content_security_policy" name="anber_wp_security_content_security_policy" value="1" ' . esc_attr($checked) . ' /><div class="slider round"></div></label>';
+echo '<p><a target="_blank" href="/">Content Security Policy</a> (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross-Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft, to site defacement, to malware distribution.</p>';
+    
 }
 
 function anber_wp_security_hsts_callback() {
     $option = get_option('anber_wp_security_hsts');
     $checked = isset($option) && $option === '1' ? 'checked' : '';
     echo '<label class="switch" for="anber_wp_security_hsts"><input type="checkbox" id="anber_wp_security_hsts" name="anber_wp_security_hsts" value="1" ' . esc_attr($checked) . ' /><div class="slider round"></div></label>';
+    echo '<p>To enable HSTS (HTTP Strict Transport Security), you first need to ensure that your website has a valid SSL Certificate installed and that you have implemented HTTP to HTTPS redirection. After that, you can add the HSTS header in your web server configuration.</p>';
 }
 
 function anber_wp_security_prevent_clickjacking_callback() {
     $option = get_option('anber_wp_security_prevent_clickjacking');
     $checked = isset($option) && $option === '1' ? 'checked' : '';
     echo '<label class="switch" for="anber_wp_security_prevent_clickjacking"><input type="checkbox" id="anber_wp_security_prevent_clickjacking" name="anber_wp_security_prevent_clickjacking" value="1" ' . esc_attr($checked) . ' /><div class="slider round"></div></label>';
+     echo '<p>The X-Frame-Options HTTP response header can be used to indicate whether a browser should be allowed to render a page in a frame, iframe, embed or object. Sites can use this to avoid click-jacking attacks, by ensuring that their content is not embedded into other sites.</p>';
+     echo '<p>The added security is provided only if the user accessing the document is using a browser that supports X-Frame-Options.</p>';
 }
 
 function anber_wp_security_prevent_content_sniffing_callback() {
     $option = get_option('anber_wp_security_prevent_content_sniffing');
     $checked = isset($option) && $option === '1' ? 'checked' : '';
     echo '<label class="switch" for="anber_wp_security_prevent_content_sniffing"><input type="checkbox" id="anber_wp_security_prevent_content_sniffing" name="anber_wp_security_prevent_content_sniffing" value="1" ' . esc_attr($checked) . ' /><div class="slider round"></div></label>';
+    echo '<p>Without the X-Content-Type-Options header set to ‘nosniff’, older versions of Internet Explorer and Chrome may perform MIME-sniffing on the response body. This means that they may ignore the declared content type and try to guess the content type based on the actual content. This can lead to security vulnerabilities, as the browser may interpret and display the response body as a different content type, potentially exposing sensitive information or executing malicious code.</p>';
 }
+
+
 
 function anber_wp_security_referrer_policy_callback() {
     $option = get_option('anber_wp_security_referrer_policy');
     $checked = isset($option) && $option === '1' ? 'checked' : '';
     echo '<label class="switch" for="anber_wp_security_referrer_policy"><input type="checkbox" id="anber_wp_security_referrer_policy" name="anber_wp_security_referrer_policy" value="1" ' . esc_attr($checked) . ' /><div class="slider round"></div></label>';
+    echo '<p>The simplest policy is "no-referrer", which specifies that no referrer information is to be sent along with requests made from a particular request client to any origin. The header will be omitted entirely.</p>';
 }

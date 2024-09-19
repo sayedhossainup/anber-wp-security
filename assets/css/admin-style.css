@@ -352,16 +352,45 @@ section#wrapper {
 
 div#style-settings tbody{
     display: flex;
-    flex-wrap: wrap;
-    gap: 60px;
+    flex-wrap: wrap;   
+    justify-content: space-between;
 }
 div#style-settings tbody tr {
-    flex: 0 0 43%;
+    flex: 1 0 47%;
+    border-top: 1px solid #eb2f96;
+}
+div#style-settings tbody tr:nth-child(odd) { 
+     padding-bottom: 30px; 
+    padding-right: 30px;
+    
+}
+div#style-settings tbody tr:nth-child(even) {      
+    padding-bottom: 30px;
+    border-left: 1px solid #eb2f96;
+    padding-left: 30px;
 }
 
-
-
-.form-table th{
-    width: 400px;
+div#style-settings .form-table td{
+    padding: 0;
+}
+div#style-settings .form-table th{
+    display: block;
+    width: 100%;
+}
+p.submit {
+    display: flex;
+    justify-content: end;
+    margin-top: 30px;
 }
 
+p.submit #submit {
+    background: #eb2f96;
+    border-color: #eb2f96;
+    box-shadow: none;
+    color: #fff;
+    padding: 10px 30px;
+    font-weight: 600;
+}
+div#general-settings .form-table th{
+        width: 400px;
+}

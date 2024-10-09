@@ -54,7 +54,7 @@ EOT;
     $csp_protection_rule = <<<EOT
 # BEGIN CSP Protection
 <IfModule mod_headers.c>
-Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self';"
+Header set Content-Security-Policy-Report-Only: "default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline';base-uri 'self';form-action 'self';"
 </IfModule>
 # END CSP Protection
 EOT;

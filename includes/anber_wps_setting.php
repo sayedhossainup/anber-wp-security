@@ -26,7 +26,6 @@ function anber_wp_security_settings_page() {
     ?>
 
     <section id="wrapper">
-
         <h2 class="pagetitle mb-30"><?php echo esc_html(get_admin_page_title()); ?></h2>
         <!-- Tab links -->
         <div class="tabs">
@@ -55,10 +54,7 @@ function anber_wp_security_settings_page() {
                     ?>
                 </form>
             </div>
-
-
         </div>
-
     </section>
 
 
@@ -230,7 +226,7 @@ function anber_wp_security_content_security_policy_callback($args) {
     $option = get_option('anber_wp_security_content_security_policy');
     $checked = isset($option) && $option === '1' ? 'checked' : '';
     echo '<label class="switch" for="anber_wp_security_content_security_policy"><input type="checkbox" id="anber_wp_security_content_security_policy" name="anber_wp_security_content_security_policy" value="1" ' . esc_attr($checked) . ' /><div class="slider round"></div></label>';
-echo '<p><a target="_blank" href="/">Content Security Policy</a> (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross-Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft, to site defacement, to malware distribution.</p>';
+echo '<p><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy</a> (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross-Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft, to site defacement, to malware distribution.</p>';
     
 }
 
@@ -264,3 +260,4 @@ function anber_wp_security_referrer_policy_callback() {
     echo '<label class="switch" for="anber_wp_security_referrer_policy"><input type="checkbox" id="anber_wp_security_referrer_policy" name="anber_wp_security_referrer_policy" value="1" ' . esc_attr($checked) . ' /><div class="slider round"></div></label>';
     echo '<p>The simplest policy is "no-referrer", which specifies that no referrer information is to be sent along with requests made from a particular request client to any origin. The header will be omitted entirely.</p>';
 }
+
